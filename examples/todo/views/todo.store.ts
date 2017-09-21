@@ -18,6 +18,7 @@ export class TodoStore extends Store<Todos> {
 	}
 	public createReceive() {
 		return this.receiveBuilder()
+		// 初始化
 			.match(InitTodos, () => {
 				getByCache().then(todos => {
 					if (todos) {
@@ -25,10 +26,12 @@ export class TodoStore extends Store<Todos> {
 					}
 				})
 			})
+			// 增加todo
 			.match(AddTodo, addTodo => {
 				const todos = [...this.state.todos, addTodo.todo]
 				this.setState({ todos }, () => localStorage.setItem("reactor-todo", JSON.stringify(this.state)))
 			})
+			// 切换 todo 状态。active，completed
 			.match(ToggleToto, toggleTodo => {
 				const todos = [...this.state.todos]
 				const todo = todos[toggleTodo.todoIndex]
@@ -36,12 +39,14 @@ export class TodoStore extends Store<Todos> {
 				todo.status = todoStatus
 				this.setState({ todos }, () => localStorage.setItem("reactor-todo", JSON.stringify(this.state)))
 			})
+			// 切换要显示的 todos 状态。all， active， completed
 			.match(ChangeDisplay, changeDisplay => this.setState({ display: changeDisplay.display }, () => localStorage.setItem("reactor-todo", JSON.stringify(this.state))))
 			.match(DestroyTodo, destroyTodo => {
 				const todos = [...this.state.todos]
 				todos.splice(destroyTodo.todoIndex, 1)
 				this.setState({ todos }, () => localStorage.setItem("reactor-todo", JSON.stringify(this.state)))
 			})
+			// 清楚已完成的todos
 			.match(ClearCompleted, () => {
 				const todos = this.state.todos.filter(todo => todo.status !== "completed")
 				this.setState({ todos }, () => localStorage.setItem("reactor-todo", JSON.stringify(this.state)))
