@@ -1,1 +1,0 @@
-import { Receive } from "js-actor"
