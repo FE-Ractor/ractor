@@ -1,0 +1,19 @@
+{
+  "name": "react-actor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "@types/react": "^15.0.33",
+    "@types/react-dom": "^15.5.4",
+    "js-actor": "^1.0.8",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}

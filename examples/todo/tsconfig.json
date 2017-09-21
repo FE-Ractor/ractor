@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"experimentalDecorators": true,
+		"jsx": "react",
+		"target": "es5",
+		"declaration": false,
+		"lib": [
+			"dom",
+			"es2015"
+		]
+	}
+}
