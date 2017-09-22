@@ -16,9 +16,25 @@ export class TodoStore extends Store<Todos> {
 		todos: [],
 		display: "all"
 	}
+
+	public loggerListener = (obj: object) => {
+		const date = new Date()
+		console.log(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:`, obj)
+	}
+
+	public preStart() {
+		// 自定义一个打印日志的功能
+		// store 启动的时候监听系统事件中心
+		this.context.system.eventStream.on("*", this.loggerListener)
+	}
+
+	public postStop() {
+		// store 停止的时候记得注销监听，防止内存泄露
+		this.context.system.eventStream.off("*", this.loggerListener)
+	}
 	public createReceive() {
 		return this.receiveBuilder()
-		// 初始化
+			// 初始化
 			.match(InitTodos, () => {
 				getByCache().then(todos => {
 					if (todos) {
