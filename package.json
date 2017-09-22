@@ -12,7 +12,7 @@
   "dependencies": {
     "@types/react": "^15.6.2",
     "@types/react-dom": "^15.5.4",
-    "js-actor": "^1.0.8",
+    "js-actor": "^1.0.9",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   }
