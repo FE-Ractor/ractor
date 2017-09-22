@@ -11,7 +11,7 @@
 
 ## 设计
 
-Reactor 只有2个显式概念，`Store`, `dispatch` 和 `action`.
+Reactor 只有3个显式概念，`Store`, `dispatch` 和 `action`.
 
 ### Action
 
