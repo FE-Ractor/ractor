@@ -35,12 +35,12 @@ export class TodoStore extends Store<Todos> {
 	public createReceive() {
 		return this.receiveBuilder()
 			// 初始化
-			.match(InitTodos, () => {
-				getByCache().then(todos => {
-					if (todos) {
-						this.setState(todos)
-					}
-				})
+			.match(InitTodos, async () => {
+				const todos = await getByCache()
+				// 第一次初始化的时候有可能返回 null
+				if (todos) {
+					this.setState(todos)
+				}
 			})
 			// 增加todo
 			.match(AddTodo, addTodo => {
