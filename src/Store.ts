@@ -15,7 +15,7 @@ export class Store<S> extends AbstractActor {
 	public setState(nextState: Partial<S>, callback?: () => void) {
 		Object.assign(this.state, nextState)
 		for (let listener of this.listeners) {
-			listener(this.state)
+			listener(this.state, callback)
 		}
 	}
 }
