@@ -1,6 +1,6 @@
 # Reactor
 
-类 actor + redux 的状态管理方案。
+类 actor + redux 的状态管理方案。基础库仅依赖我之前写的 [js-actor](https://github.com/huangbinjie/js-actor)。
 
 ## 灵感
 
@@ -67,6 +67,38 @@ dispatch 可以往我们的事件系统中广播 action.
 
 + [counter](https://github.com/huangbinjie/reactor/tree/master/examples/counter)
 + [todo](https://github.com/huangbinjie/reactor/tree/master/examples/todo)
+
+## 关于 middleware
+
+既然我采用的 actor 的 oop 范式。不同于 redux 的那种组合方式的 middleware。Reactor 也可以使用继承的方式实现 middleware，比如实现一个打印日志的 store:
+
+```ts
+export class LoggerStore extends Store<{}> {
+
+  public loggerListener = (obj: object) => {
+    const date = new Date()
+    console.log(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:`, obj)
+  }
+
+  public preStart() {
+    // 自定义一个打印日志的功能
+    // store 启动的时候监听系统事件中心
+    this.context.system.eventStream.on("*", this.loggerListener) 
+  }
+
+  public postStop() {
+    // store 停止的时候记得注销监听，防止内存泄露
+    this.context.system.eventStream.off("*", this.loggerListener)
+  }
+```
+
+之后自己的业务 store 继承这个 `LoggerStore` 就有打印日志功能啦
+
+## 之后的规划
+
++ 尝试 ng 系列的 connect
++ 实战测试，我率先体验
++ 效率优化，可能有哪些没仔细考虑的地方。包括 js-actor 也有可能没优化好
 
 ## 最后
 
