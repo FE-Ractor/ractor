@@ -1,6 +1,6 @@
 import { Increment } from "../messages/Increment"
 import { Decrement } from "../messages/Decrement"
-import { Store } from "../../../src/Store"
+import { Store } from "ractor"
 
 export class CounterStore extends Store<{ value: number }> {
 	public state = { value: 1 }

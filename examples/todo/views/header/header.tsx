@@ -1,5 +1,5 @@
 import * as React from "react"
-import { dispatch } from "../../../../src"
+import { dispatch } from "ractor"
 import { Todo } from "../../types/todo"
 import { AddTodo } from "../../messages/AddTodo"
 

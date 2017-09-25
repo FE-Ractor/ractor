@@ -1,4 +1,4 @@
-import { Store } from "../../../src"
+import { Store } from "ractor"
 import { getByCache, Todos } from "../apis/cache"
 import { Todo } from "../types/Todo"
 

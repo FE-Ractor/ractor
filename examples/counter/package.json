@@ -5,6 +5,8 @@
 	"version": "1.0.0",
 	"main": "pathToMain",
 	"dependencies": {
+		"ractor": "^1.0.2",
+		"ractor-react": "^1.0.2",
 		"react": "^15.6.1",
 		"react-dom": "^15.6.1"
 	}

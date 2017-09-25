@@ -1,7 +1,7 @@
 import * as React from "react"
-import { connect } from "../../../src/connect/react"
+import { connect } from "ractor-react"
 import { CounterStore } from "../behaviors/counterStore"
-import { dispatch } from "../../../src/index"
+import { dispatch } from "ractor"
 import { Increment } from "../messages/Increment"
 import { Decrement } from "../messages/Decrement"
 
