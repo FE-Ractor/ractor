@@ -1,19 +1,17 @@
 {
-  "name": "react-actor",
+  "name": "ractor",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "rm -fr dist && tsc",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
-    "@types/react": "^15.6.2",
-    "@types/react-dom": "^15.5.4",
-    "js-actor": "^1.0.9",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "js-actor": "^1.0.9"
   }
 }
