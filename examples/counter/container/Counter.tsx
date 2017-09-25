@@ -1,5 +1,5 @@
 import * as React from "react"
-import { connect } from "../../../src/index"
+import { connect } from "../../../src/connect/react"
 import { CounterStore } from "../behaviors/counterStore"
 import { dispatch } from "../../../src/index"
 import { Increment } from "../messages/Increment"
