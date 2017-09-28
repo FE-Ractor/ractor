@@ -6,6 +6,7 @@ export class Store<S> extends AbstractActor {
 
 	public subscribe(listener: Listener<S>) {
 		this.listeners.push(listener)
+		listener(this.state)
 		return () => {
 			const index = this.listeners.indexOf(listener)
 			this.listeners.splice(index, 1)
