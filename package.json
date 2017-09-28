@@ -1,7 +1,7 @@
 {
   "name": "ractor",
-  "version": "1.0.2",
-  "description": "",
+  "version": "1.0.3",
+  "description": "actor like state management.inspired by actor, redux, mobx.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {

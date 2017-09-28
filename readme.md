@@ -9,6 +9,8 @@
 但是 redux 的 reducer 和 store 之间的关系太松散。模块化不仅仅是低耦合，也要高内聚。所以我需要一种实现一种高内聚的模块化的表达组件的方式的同时，又要保持上面提到的视图和行为分离，action 抽象。
 是的，一句话就能表达：`Component(state, view, behavior)`。
 
+所以 ractor 不仅可以让你采用 redux 那种 domain store 的方式，也能让你采用 mobx 那种 state store 的方式完成状态管理哦
+
 ## 设计
 
 Reactor 只有3个显式概念，`Store`, `dispatch` 和 `action`.
@@ -96,9 +98,8 @@ export class LoggerStore extends Store<{}> {
 
 ## 之后的规划
 
-+ 尝试 ng 系列的 connect
-+ 实战测试，我率先体验
-+ 效率优化，可能有哪些没仔细考虑的地方。包括 js-actor 也有可能没优化好
++ 支持 Observable
++ 优化
 
 ## 最后
 
