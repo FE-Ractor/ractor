@@ -58,17 +58,11 @@ dispatch 可以往我们的事件系统中广播 action.
 
 ## React
 
-和 React 一起使用也很简单。`connect/react/connect.ts` 提供了连接 Store 和 React 的功能。它是一个高阶组件: `connect(Store)(React)`:
+[https://github.com/huangbinjie/ractor-react](https://github.com/huangbinjie/ractor-react)
 
-```ts
-  @connect(TodoStore)
-  class Todo extends React.Component<TodoState, {}> {}
-```
+## angular
 
-## Examples
-
-+ [counter](https://github.com/huangbinjie/reactor/tree/master/examples/counter)
-+ [todo](https://github.com/huangbinjie/reactor/tree/master/examples/todo)
+[https://github.com/huangbinjie/ractor-angular](https://github.com/huangbinjie/ractor-angular)
 
 ## 关于 middleware
 
@@ -94,7 +88,7 @@ export class LoggerStore extends Store<{}> {
   }
 ```
 
-之后自己的业务 store 继承这个 `LoggerStore` 就有打印日志功能啦
+之后自己的 store 继承这个 `LoggerStore` 就有打印日志功能啦
 
 ## 之后的规划
 
