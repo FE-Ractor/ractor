@@ -2,16 +2,13 @@
 
 类 actor + redux 的状态管理方案。基础库仅依赖我之前写的 [js-actor](https://github.com/huangbinjie/js-actor)。
 
-## 灵感
+## 安装
 
-在略大点的项目里，可控性比自由性更重要。
-因为 redux 的一些特性，这通常是 redux 发挥的场景。比如，视图和行为分离，action 抽象等等。
-但是 redux 的 reducer 和 store 之间的关系太松散。模块化不仅仅是低耦合，也要高内聚。所以我需要一种实现一种高内聚的模块化的表达组件的方式的同时，又要保持上面提到的视图和行为分离，action 抽象。
-是的，一句话就能表达：`Component(state, view, behavior)`。
+```shell
+npm i ractor
+```
 
-所以 ractor 不仅可以让你采用 redux 那种 domain store 的方式，也能让你采用 mobx 那种 state store 的方式完成状态管理哦
-
-## 设计
+## API
 
 Reactor 只有3个显式概念，`Store`, `dispatch` 和 `action`.
 
