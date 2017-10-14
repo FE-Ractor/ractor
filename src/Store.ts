@@ -39,7 +39,7 @@ export abstract class Store<S> extends AbstractActor {
 	 * @param nextState 
 	 */
 	public setState(nextState: Partial<S>) {
-		Object.assign(this.state, nextState)
+		this.state = Object.assign({}, this.state, nextState)
 		for (let listener of this.listeners) {
 			if (typeof listener === "function") {
 				listener(this.state)
