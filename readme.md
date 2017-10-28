@@ -1,6 +1,6 @@
 # Reactor
 
-类 actor + redux 的状态管理方案。基础库仅依赖我之前写的 [js-actor](https://github.com/huangbinjie/js-actor)。
+在 flux 之后的所有方案里，store = event system. 在这个库里"单"指的是 event system.
 
 ## 安装
 
@@ -89,8 +89,7 @@ export class LoggerStore extends Store<{}> {
 
 ## 之后的规划
 
-+ 支持 Observable
-+ 优化
++ 考虑是否支持改成单独创建 system
 
 ## 最后
 
