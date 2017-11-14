@@ -1,6 +1,6 @@
 # Reactor
 
-在 flux 之后的所有方案里，store = event system. 在这个库里"单"指的是 event system.
+在 flux 之后的所有方案里，store = event system. 还是 redux 的味道，不过 redux 提倡的 single store 在这里指的是 system.eventStream，而 redux 的 reducer 在这里约等于 store。同是事件系统，redux 对 event handler 的建模没我 powerful(reducer vs actor)。
 
 ## 安装
 
@@ -10,7 +10,7 @@ npm i ractor
 
 ## API
 
-Reactor 只有3个显式概念，`Store`, `dispatch` 和 `action`.
+Reactor 只有3个概念，`System`, `Store` 和 `action`.
 
 ### Action
 
@@ -26,9 +26,17 @@ action 是对行为的一种抽象，它拥有充分的自我描述性，可序�
  new WhoToGreet("Corol")
 ```
 
+### System
+
+system 指的就是一个小型的事件系统，一般情况下，你需要手动给你的每一个 app 创建一个 event system。对于包含多个子项目的系统，你又可以让子项目共享一个事件系统，这取决于你的设计。
+
+```ts
+const system = new System("app")
+```
+
 ### Store
 
-Store 有点像 mobx 的 store，一种状态和行为的集合: `Store(state, behavior)`。
+Store 有点像 mobx 的 store，一种状态和行为的集合: `new Store(state, behavior)`。
 
 ```ts
   class GreetingStore extends Store<{name: string}> {
@@ -44,14 +52,6 @@ Store 有点像 mobx 的 store，一种状态和行为的集合: `Store(state, b
 ```
 
 Store 继承自 [AbstractActor](https://github.com/huangbinjie/js-actor#abstractactor)
-
-### dispatch
-
-dispatch 可以往我们的事件系统中广播 action.
-
-```ts
-  dispatch(new WhoToGreet("Corol"))
-```
 
 ## React
 
@@ -75,7 +75,7 @@ export class LoggerStore extends Store<{}> {
 
   public preStart() {
     // 自定义一个打印日志的功能
-    // store 启动的时候监听系统事件中心
+    // store 启动之后监听系统事件中心
     this.context.system.eventStream.on("*", this.loggerListener) 
   }
 
@@ -89,8 +89,8 @@ export class LoggerStore extends Store<{}> {
 
 ## 之后的规划
 
-+ 考虑是否支持改成单独创建 system
+暂无
 
 ## 最后
 
-如果你有好的建议，请留言...
+[知乎链接](https://zhuanlan.zhihu.com/p/30443458)
