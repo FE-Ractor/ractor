@@ -1,7 +1,12 @@
-import { AbstractActor, Receive } from "js-actor"
+import { AbstractActor, ActorContext, Receive } from "js-actor"
+import { System } from "./System"
 
+export interface StoreContext extends ActorContext {
+	system: System
+}
 export abstract class Store<S> extends AbstractActor {
 	public state = {} as S
+	public context: StoreContext
 	public listeners: Array<Listener<S> | Observer<S>> = []
 	public abstract createReceive(): Receive
 
