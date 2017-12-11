@@ -1,2 +1,2 @@
 export * from "./Store"
-export { System } from "./system"
+export { System } from "./System"
