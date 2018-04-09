@@ -6,7 +6,7 @@ export interface StoreContext extends ActorContext {
 }
 export abstract class Store<S> extends AbstractActor {
 	public state = {} as S
-	public context: StoreContext
+	public context!: StoreContext
 	public listeners: Array<Listener<S> | Observer<S>> = []
 	public abstract createReceive(): Receive
 
