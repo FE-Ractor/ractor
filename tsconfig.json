@@ -5,6 +5,7 @@
 		"module": "commonjs",
 		"strict": true,
 		"declaration": true,
+		"downlevelIteration": true,
 		"outDir": "dist",
 		"lib": [
 			"dom",

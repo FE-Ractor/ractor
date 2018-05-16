@@ -9,9 +9,9 @@ class TestStore<S> extends Store<S> {
 }
 
 test("store should support subscribe to the observer of rxjs", t => {
-  const subject = new Subject
+  const subject = new Subject<{ value: number }>()
   const store = new TestStore<{ value: 1 }>()
   store.subscribe(subject)
-  subject.subscribe((state: { value: number }) => t.is(state.value, 1))
+  subject.subscribe(state => t.is(state.value, 1))
   store.setState({ value: 1 })
 })

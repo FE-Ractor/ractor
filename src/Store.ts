@@ -1,5 +1,6 @@
 import { AbstractActor, ActorContext, Receive } from "js-actor"
 import { System } from "./System"
+import { StorePreStart, StorePostStop, StorePostError } from "./actions"
 
 export interface StoreContext extends ActorContext {
 	system: System
@@ -9,6 +10,24 @@ export abstract class Store<S> extends AbstractActor {
 	public context!: StoreContext
 	public listeners: Array<Listener<S> | Observer<S>> = []
 	public abstract createReceive(): Receive
+
+	public preStart() {
+		if (this.context.system.withStoreEvent) {
+			this.context.system.dispatch(new StorePreStart(this))
+		}
+	}
+
+	public postStop() {
+		if (this.context.system.withStoreEvent) {
+			this.context.system.dispatch(new StorePostStop(this))
+		}
+	}
+
+	public postError(error: Error) {
+		if (this.context.system.withStoreEvent) {
+			this.context.system.dispatch(new StorePostError(this, error))
+		}
+	}
 
 	/**
 	 * 新增了对 rxjs 的 Observable 的支持，后续考虑支持 https://github.com/tc39/proposal-observable
