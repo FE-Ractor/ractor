@@ -10,7 +10,7 @@ I'm big fan of Redux. It's concept is perfect but i don't like something in Redu
 
 I know pure is good(eg. suitable for test and debug). But it's a little tied to separate a impure action to two files(reducer and middleware). It's more convenient for me or other people to write the impure actions in most scenarios. Pure and Impure has its own advantages. I tend to write impure ”reducer“ due to the es7 asynchronous function.
 
-### Dialog problem
+### Dialog Problem
 
 Imagine you have a page A and a component Dialog rendered in A. In A, you have a button that want to tell Dialog to open. Now switch page A to page B, you should to unmount Dialog.
 
@@ -19,6 +19,14 @@ How do you do this with redux?
 In Redux way, you need to initialize a Dialog state in redux store. But if switch A to B, Dialog has unmounted, the Dialog state is still in redux store. It's the problem.
 
 In Ractor way, we can dynamic mount and unmount the "reducer".
+
+### State Problem
+
+After you create a new action in your component. At this moment, You know what part of the state was modified. However you can do nothing to tell your state consumer to just receive this part of state. 
+
+In Redux way, your should merge your state to redux, then your component will receive the whole state and recognize the state that you just merged into redux. 
+
+In Ractor, we can just update the specifical state due to the multiple store architecture.
 
 ## Install
 
