@@ -1,14 +1,8 @@
 import { ActorSystem, AbstractActor, ActorRef } from "js-actor"
 
-export type SystemOptions = {
-  maxListener?: number
-  withStoreEvent?: boolean
-}
 export class System extends ActorSystem {
-  public withStoreEvent = false
-  constructor(name: string, options = {} as SystemOptions) {
-    super(name, options.maxListener)
-    this.withStoreEvent = options.withStoreEvent || false
+  constructor(name: string) {
+    super(name)
   }
 
   public dispatch(message: object) {

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.12
+
++ drop the system options
+
 ## 1.0.11
 
 + feat: change the mechanism of Dispath. Dispatch now will map the children to find the instance to tell.
