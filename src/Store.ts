@@ -5,15 +5,12 @@ export interface StoreContext extends ActorContext {
 	system: System
 }
 export abstract class Store<S> extends AbstractActor {
-	public state = {} as S
+	private listeners: Array<Listener<S> | Observer<S>> = []
+	public abstract state: S
 	public context!: StoreContext
-	public listeners: Array<Listener<S> | Observer<S>> = []
 	public abstract createReceive(): Receive
 
 	/**
-	 * 新增了对 rxjs 的 Observable 的支持，后续考虑支持 https://github.com/tc39/proposal-observable
-	 * 灵感来源：https://github.com/reactjs/redux/blob/master/src/createStore.js#L209
-	 * 
 	 * listener can be function or observer of rxjs
 	 * @param listener 
 	 */
@@ -38,9 +35,7 @@ export abstract class Store<S> extends AbstractActor {
 	}
 
 	/**
-	 * 去掉了 callback，callback 的初衷是状态成功修改之后调用。
-	 * 但是对于 store 来说， setState 是同步的而且是必定会成功的，所以这个 callback 是没有意义。
-	 * 
+	 * setState is sync.
 	 * @param nextState 
 	 */
 	public setState(nextState: Partial<S>) {
@@ -48,7 +43,7 @@ export abstract class Store<S> extends AbstractActor {
 		for (let listener of this.listeners) {
 			if (typeof listener === "function") {
 				listener(this.state)
-			} else if (typeof listener === "object") {
+			} else {
 				listener.next(this.state)
 			}
 		}

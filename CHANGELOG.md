@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.13
+
++ fix: Dispatch calls the tell multiple times would cause the eventStream emit the same times.
++ feat: change the property state to `abstract`.
+
 ## 1.0.12
 
 + drop the system options
