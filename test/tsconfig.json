@@ -6,6 +6,7 @@
     "jsx": "react",
     "outDir": "../_test",
     "module": "commonjs",
+    "skipLibCheck": true,
     "lib": [
       "dom",
       "es2015"

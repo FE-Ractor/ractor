@@ -9,4 +9,3 @@ export class System extends ActorSystem {
     this.eventStream.emit("*", message)
   }
 }
-

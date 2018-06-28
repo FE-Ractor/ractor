@@ -1,6 +1,6 @@
 {
   "name": "ractor",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "actor like state management.inspired by actor, redux, mobx.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -17,9 +17,9 @@
   "devDependencies": {
     "ava": "^0.22.0",
     "npm-run-all": "^4.1.1",
-    "rxjs": "^5.4.3"
+    "rxjs": "^5.5.11"
   },
   "dependencies": {
-    "js-actor": "^1.1.4"
+    "js-actor": "^1.1.5"
   }
 }

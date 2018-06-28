@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.14
+
++ upgrade js-actor to 1.1.5
+
 ## 1.0.13
 
 + fix: Dispatch calls the tell multiple times would cause the eventStream emit the same times.

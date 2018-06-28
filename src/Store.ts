@@ -1,4 +1,4 @@
-import { AbstractActor, ActorContext, Receive } from "js-actor"
+import { AbstractActor, ActorContext, IActorReceive } from "js-actor"
 import { System } from "./System"
 
 export interface StoreContext extends ActorContext {
@@ -6,9 +6,8 @@ export interface StoreContext extends ActorContext {
 }
 export abstract class Store<S> extends AbstractActor {
 	private listeners: Array<Listener<S> | Observer<S>> = []
-	public abstract state: S
+	public state = {} as S
 	public context!: StoreContext
-	public abstract createReceive(): Receive
 
 	/**
 	 * listener can be function or observer of rxjs
@@ -23,7 +22,7 @@ export abstract class Store<S> extends AbstractActor {
 			this.listeners.push(listener)
 			listener(this.state)
 		} else {
-			throw TypeError("expected the listener to be an function or observer.")
+			throw TypeError("expected the listener to be a function or observer.")
 		}
 
 		return {
