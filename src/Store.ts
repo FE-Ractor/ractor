@@ -1,7 +1,7 @@
-import { AbstractActor, ActorContext, IActorReceive } from "js-actor"
+import { AbstractActor, IActorContext, IActorReceive } from "js-actor"
 import { System } from "./System"
 
-export interface StoreContext extends ActorContext {
+export interface StoreContext extends IActorContext {
 	system: System
 }
 export abstract class Store<S> extends AbstractActor {
