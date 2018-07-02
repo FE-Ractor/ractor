@@ -13,7 +13,7 @@
     "test": "npm-run-all build_test test_ava clean_test"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "ava": "^0.22.0",
     "npm-run-all": "^4.1.1",
