@@ -1,11 +1,11 @@
-import { ActorSystem, AbstractActor, ActorRef } from "js-actor"
+import { ActorSystem } from "js-actor"
 
 export class System extends ActorSystem {
   constructor(name: string) {
     super(name)
   }
 
-  public dispatch(message: object) {
-    this.eventStream.emit("*", message)
+  public dispatch(message: object, volumn: number) {
+    this.broadcast(message, volumn)
   }
 }

@@ -1,4 +1,4 @@
-import { AbstractActor, IActorContext, IActorReceive } from "js-actor"
+import { AbstractActor, IActorContext } from "js-actor"
 import { System } from "./System"
 
 export interface StoreContext extends IActorContext {
