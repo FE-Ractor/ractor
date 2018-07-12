@@ -5,7 +5,7 @@ export class System extends ActorSystem {
     super(name)
   }
 
-  public dispatch(message: object, volumn: number) {
-    this.broadcast(message, volumn)
+  public dispatch(message: object, to = "root/", volumn = 0) {
+    this.broadcast(message, to, volumn)
   }
 }

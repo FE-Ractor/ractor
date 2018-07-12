@@ -1,6 +1,6 @@
 {
   "name": "ractor",
-  "version": "1.0.15",
+  "version": "1.1.0",
   "description": "actor like state management.inspired by actor, redux, mobx.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -12,7 +12,7 @@
     "test_ava": "ava _test/test/",
     "test": "npm-run-all build_test test_ava clean_test"
   },
-  "author": "",
+  "author": "corol",
   "license": "MIT",
   "devDependencies": {
     "ava": "^0.22.0",
@@ -20,6 +20,6 @@
     "rxjs": "^5.5.11"
   },
   "dependencies": {
-    "js-actor": "^1.1.10"
+    "js-actor": "^1.1.11"
   }
 }
