@@ -1,4 +1,4 @@
-# Reactor
+# Ractor
 
 Ractor is an event system based and multiple stores architecture state management for frontend app that inspired by Redux and Akka Actor.
 
