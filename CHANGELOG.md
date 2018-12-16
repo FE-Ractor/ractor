@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
++ state is optional. if state is primitive value, null, undefined, setState should replace state with it.
+
 ## 1.0.14
 
 + upgrade js-actor to 1.1.5

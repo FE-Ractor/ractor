@@ -6,7 +6,7 @@ export interface StoreContext extends IActorContext {
 }
 export abstract class Store<S> extends AbstractActor {
 	private listeners: Array<Listener<S> | Observer<S>> = []
-	public state = {} as S
+	public state: any
 	public context!: StoreContext
 
 	/**
@@ -35,10 +35,20 @@ export abstract class Store<S> extends AbstractActor {
 
 	/**
 	 * setState is sync.
+	 * if next
 	 * @param nextState 
 	 */
 	public setState(nextState: Partial<S>) {
-		this.state = Object.assign({}, this.state, nextState)
+		if (typeof nextState === "object") {
+			if (typeof this.state === "object") {
+				this.state = Object.assign({}, this.state, nextState)
+			} else {
+				this.state = nextState
+			}
+		} else {
+			throw TypeError("takes an object of state variables to update.")
+		}
+
 		for (let listener of this.listeners) {
 			if (typeof listener === "function") {
 				listener(this.state)
