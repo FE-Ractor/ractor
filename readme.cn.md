@@ -108,5 +108,5 @@ function Counter() {
 
 ## Examples
 
-+ [counter](https://stackblitz.com/edit/ractor-hooks)
-
++ [class store counter](https://stackblitz.com/edit/ractor-hooks)
++ [functional store counter](https://stackblitz.com/edit/ractor-hooks-createstore?file=index.js)
