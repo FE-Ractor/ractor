@@ -18,7 +18,7 @@ export function createStore<S>(createReceive: CreateReceive, initialState?: any)
         .matchAny(obj => {
           const receive = createReceive(this.state, (nextState: any) => {
             this.replaceState(nextState)
-            childRef.getActor().context.stop()
+            childRef.getInstance().context.stop()
           })
           const Child = createChildProcessor(receive)
           const childRef = this.context.actorOf(new Child)

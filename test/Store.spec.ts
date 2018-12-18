@@ -73,5 +73,5 @@ test("createStore", t => {
   t.is(store.state, 1)
   system.dispatch(new Decrement)
   t.is(store.state, 0)
-  t.is(storeRef.getActor().context.children.size, 0)
+  t.is(storeRef.getContext().children.size, 0)
 })
