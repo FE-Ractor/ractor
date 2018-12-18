@@ -55,6 +55,20 @@ export class CounterStore extends Store<{ value: number }> {
 }
 ```
 
+除了 class 创建 Store 之外，Ractor 还提供了比较简单的创建方式 `createStore`
+
+```ts
+import { ReceiveBuilder } from "ractor"
+
+const CounterStore = createStore((state, replaceState) => {
+  return ReceiveBuilder
+    .create()
+    .match(Increment, () => replaceState(state + 1))
+    .match(Decrement, () => replaceState(state - 1))
+    .build()
+})
+```
+
 ## React
 
 我们可以用 [ractor-react](https://github.com/huangbinjie/ractor-react) 也可以用 [ractor-hooks](https://github.com/huangbinjie/ractor-hooks) 搭配 React 使用。这里主要介绍 `ractor-hooks`。

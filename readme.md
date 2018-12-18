@@ -59,6 +59,20 @@ export class CounterStore extends Store<{ value: number }> {
 }
 ```
 
+There is a convenient function `createStore` to createStore quickly.
+
+```ts
+import { ReceiveBuilder } from "ractor"
+
+const CounterStore = createStore((state, replaceState) => {
+  return ReceiveBuilder
+    .create()
+    .match(Increment, () => replaceState(state + 1))
+    .match(Decrement, () => replaceState(state - 1))
+    .build()
+})
+```
+
 ## React
 
 There is the quick glance of [ractor-hooks](https://github.com/huangbinjie/ractor-hooks)

@@ -1,6 +1,8 @@
 import test from "ava"
 import { Subject } from "rxjs"
 import { Store } from "../src/Store"
+import { createStore } from "../src/createStore"
+import { ReceiveBuilder, System } from "../src"
 
 test("store should support subscribe to the observer of rxjs", t => {
   class TestStore<S> extends Store<S> {
@@ -51,4 +53,25 @@ test("replace state while state is primitive value", t => {
   t.is(store.state, 1)
   store.setState({ value: 1 })
   t.deepEqual(store.state as any, { value: 1 })
+})
+
+test("createStore", t => {
+  const system = new System("test")
+  class Increment { }
+  class Decrement { }
+  function reducer(state = 0, replaceState: (nextState: any) => void) {
+    return ReceiveBuilder
+      .create()
+      .match(Increment, () => replaceState(state + 1))
+      .match(Decrement, () => replaceState(state - 1))
+      .build()
+  }
+  const CounterStore = createStore(reducer)
+  const store = new CounterStore
+  const storeRef = system.actorOf(store)
+  storeRef.tell(new Increment)
+  t.is(store.state, 1)
+  system.dispatch(new Decrement)
+  t.is(store.state, 0)
+  t.is(storeRef.getActor().context.children.size, 0)
 })

@@ -35,7 +35,7 @@ export abstract class Store<S> extends AbstractActor {
 
 	/**
 	 * setState is sync.
-	 * if next
+	 *
 	 * @param nextState 
 	 */
 	public setState(nextState: Partial<S>) {
@@ -49,6 +49,17 @@ export abstract class Store<S> extends AbstractActor {
 			throw TypeError("takes an object of state variables to update.")
 		}
 
+		for (let listener of this.listeners) {
+			if (typeof listener === "function") {
+				listener(this.state)
+			} else {
+				listener.next(this.state)
+			}
+		}
+	}
+
+	public replaceState(nextState: any) {
+		this.state = nextState
 		for (let listener of this.listeners) {
 			if (typeof listener === "function") {
 				listener(this.state)

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.2
+
++ new function `createStore` helps you create store quickly.
++ export `ReceiveBuilder` from dependent module `js-actor`.
+
 ## 1.1.1
 
 + state is optional. if state is primitive value, null, undefined, setState should replace state with it.
