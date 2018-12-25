@@ -55,23 +55,30 @@ test("replace state while state is primitive value", t => {
   t.deepEqual(store.state as any, { value: 1 })
 })
 
-test("createStore", t => {
+test.cb("createStore", t => {
   const system = new System("test")
   class Increment { }
   class Decrement { }
-  function reducer(state = 0, replaceState: (nextState: any) => void) {
+  class TimeoutIncrement { constructor(public time: number) { } }
+
+  const CounterStore = createStore(function (getState, setState) {
     return ReceiveBuilder
       .create()
-      .match(Increment, () => replaceState(state + 1))
-      .match(Decrement, () => replaceState(state - 1))
+      .match(Increment, () => setState(getState() + 1))
+      .match(Decrement, () => setState(getState() - 1))
+      .match(TimeoutIncrement, ({ time }) => setTimeout(() => setState(getState() + 1), time))
       .build()
-  }
-  const CounterStore = createStore(reducer)
+  }, 0)
   const store = new CounterStore
   const storeRef = system.actorOf(store)
   storeRef.tell(new Increment)
   t.is(store.state, 1)
   system.dispatch(new Decrement)
   t.is(store.state, 0)
-  t.is(storeRef.getContext().children.size, 0)
+  system.dispatch(new TimeoutIncrement(100))
+  setTimeout(() => {
+    t.is(store.state, 2)
+    t.end()
+  }, 200)
+  system.dispatch(new Increment)
 })

@@ -60,13 +60,13 @@ export class CounterStore extends Store<{ value: number }> {
 ```ts
 import { ReceiveBuilder } from "ractor"
 
-const CounterStore = createStore((state, replaceState) => {
+const CounterStore = createStore((getState, setState) => {
   return ReceiveBuilder
     .create()
-    .match(Increment, () => replaceState(state + 1))
-    .match(Decrement, () => replaceState(state - 1))
+    .match(Increment, () => setState(getState + 1))
+    .match(Decrement, () => setState(getState - 1))
     .build()
-})
+}, 0)
 ```
 
 ## React
