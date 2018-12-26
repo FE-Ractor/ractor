@@ -1,6 +1,6 @@
 <p>&nbsp;</p>
 <p align='center'>
-  <img src="http://acgfun.b0.upaiyun.com/image/ractor@300px.png" width="300" />
+  <img src="http://pkc0dr4sb.bkt.clouddn.com/ractor_shadow@1000px.png" width="300" />
 </p>
 <h1 align="center">Ractor</h1>
 <p align='center'>Another action based state management tool</p>

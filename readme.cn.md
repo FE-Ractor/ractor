@@ -1,6 +1,6 @@
 <p>&nbsp;</p>
 <p align='center'>
-  <img src="http://acgfun.b0.upaiyun.com/image/ractor@300px.png" width="300" />
+  <img src="http://pkc0dr4sb.bkt.clouddn.com/ractor_shadow@1000px.png" width="300" />
 </p>
 <h1 align="center">Ractor</h1>
 <p align='center'>一个基于 action 设计的状态管理工具</p>
