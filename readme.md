@@ -27,7 +27,7 @@ import { System } from "ractor";
 export const system = new System("counter");
 ```
 
-### Message
+### Action
 
 The abstraction of system behavior. You can create it by class.
 
