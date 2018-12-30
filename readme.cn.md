@@ -110,3 +110,6 @@ function Counter() {
 
 + [class store counter](https://stackblitz.com/edit/ractor-hooks)
 + [functional store counter](https://stackblitz.com/edit/ractor-hooks-createstore?file=index.js)
+
+## 交流群
+QQ群：683288508
