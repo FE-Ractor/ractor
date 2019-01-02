@@ -82,3 +82,20 @@ test.cb("createStore", t => {
   }, 200)
   system.dispatch(new Increment)
 })
+
+test("name", t => {
+  var any1 = createStore(function counterStore1() {
+    return ReceiveBuilder.create().build()
+  })
+  t.is(any1.name, "counterStore1")
+
+  var any2 = createStore(() => ReceiveBuilder.create().build(), 0, "counterStore2")
+  t.is(any2.name, "counterStore2")
+
+  class CounterStore extends Store<any> {
+    createReceive() {
+      return this.receiveBuilder().build()
+    }
+  }
+  t.is(CounterStore.name, "CounterStore")
+})
