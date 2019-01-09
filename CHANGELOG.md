@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.7
+
++ Change `dispatch` to arrow function in order to destructure system `const { dispatch } = system`.
++ Support system option `serialize` for `js-actor@1.4.0`.
+
 ## 1.1.2
 
 + new function `createStore` helps you create store quickly.
